@@ -13,6 +13,10 @@ const LoginSignup = () => {
         </div>
         <button>Countinue</button>
         <p className='loginsignup-login'>Already have a account? <span>Login</span></p>
+        <div className="loginsignup-agree">
+          <input type="checkbox" name='' id='' />
+          <p>By Countinuing, i agree to the temp of use and privacy policy.</p>
+        </div>
       </div>
     </div>
   )

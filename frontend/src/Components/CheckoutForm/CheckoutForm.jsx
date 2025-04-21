@@ -8,7 +8,6 @@ const CheckoutForm = ({ onSubmit }) => {
         phone: '',
         address: '',
         city: '',
-        zipCode: '',
         paymentMethod: 'cod'
     });
 
@@ -88,16 +87,6 @@ const CheckoutForm = ({ onSubmit }) => {
                             value={formData.city} 
                             onChange={handleChange}
                             required 
-                        />
-                    </div>
-                    <div className="form-group">
-                        <label htmlFor="zipCode">Mã bưu điện</label>
-                        <input 
-                            type="text" 
-                            id="zipCode" 
-                            name="zipCode" 
-                            value={formData.zipCode} 
-                            onChange={handleChange}
                         />
                     </div>
                 </div>

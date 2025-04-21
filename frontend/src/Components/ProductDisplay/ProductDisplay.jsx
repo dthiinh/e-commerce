@@ -1,10 +1,13 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import './ProductDisplay.css'
 import star_icon from "../Assests/star_icon.png"
 import star_dull_icon from "../Assests/star_icon.png"
+import { ShopContext } from '../../Context/ShopContext'
 
 const ProductDisplay = (props) => {
     const { product } = props
+    const {addToCart} = useContext(ShopContext);
+
     return (
         <div className='productdisplay'>
             <div className='productdisplay-left'>
@@ -28,25 +31,25 @@ const ProductDisplay = (props) => {
                     <img src={star_dull_icon} alt="" />
                     <p>(100)</p>
                 </div>
-                <div className="productdispay-right-prices">
-                    <div className="product-display-right-price-old">{product.old_price}k</div>
-                    <div className="product-display-right-price-new">{product.new_price}k</div>
+                <div className="productdisplay-right-price">
+                    <div className="productdisplay-right-price-old">{product.old_price}k</div>
+                    <div className="productdisplay-right-price-new">{product.new_price}k</div>
                 </div>
                 <div className="productdisplay-right-description">
                     yap yap yap yap bla bla bla .... bun ngu qua
                 </div>
                 <div className="productdisplay-right-size">
                     <h1>Select Size</h1>
-                    <div className="productisplay-right-size">
+                    <div className="productdisplay-right-size">
                         <div>S</div>
                         <div>M</div>
                         <div>L</div>
                         <div>XL</div>
                     </div>
                 </div>
-                <button>ADD TO CART</button>
+                <button onClick={()=>{addToCart(product.id)}}>ADD TO CART</button>
                 <p className="productdisplay-right-category"><span>Category: </span>Women, T-Shirt, Crop Top</p>
-                <p className="productdisplay-right-category"><span>Tags: </span>Modern, Latestp</p>
+                <p className="productdisplay-right-category"><span>Tags: </span>Modern, Latest</p>
             </div>
         </div>
     )

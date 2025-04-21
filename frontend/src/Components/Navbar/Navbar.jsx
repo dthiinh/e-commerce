@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react'
+import React, { useContext, useState, useEffect } from 'react'
 import './Navbar.css'
 import { Link } from 'react-router-dom'
 import logo from '../Assests/logo.png'
@@ -6,8 +6,15 @@ import cart_icon from '../Assests/cart_icon.png'
 import { ShopContext } from '../../Context/ShopContext'
 
 const Navbar = () => {
-    const [menu, setMenu] = useState("Shop");
+    const [menu, setMenu] = useState("shop");
     const { getTotalCartItems } = useContext(ShopContext);
+    const [cartCount, setCartCount] = useState(0);
+    
+    // Cập nhật số lượng giỏ hàng khi có thay đổi
+    useEffect(() => {
+        setCartCount(getTotalCartItems());
+    }, [getTotalCartItems]);
+
     return (
         <div className='navbar'>
             <div className='nav-logo'>
@@ -21,9 +28,11 @@ const Navbar = () => {
                 <li onClick={() => { setMenu("kids") }}><Link style={{ textDecoration: 'none', color: '#626262' }} to='/kids'>Kids</Link>{menu === "kids" ? <hr /> : <></>}</li>
             </ul>
             <div className='nav-login-cart'>
-                <Link to='/login'><button>Login</button></Link>
-                <Link to='/cart'><img src={cart_icon} alt="" /></Link>
-                <div className="nav-cart-count">{getTotalCartItems()}</div>
+                <Link to='/login'><button>Tài khoản</button></Link>
+                <Link to='/cart'>
+                    <img src={cart_icon} alt="cart" />
+                    {cartCount > 0 && <div className="nav-cart-count">{cartCount}</div>}
+                </Link>
             </div>
         </div>
     )

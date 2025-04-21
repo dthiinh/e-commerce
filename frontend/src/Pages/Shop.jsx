@@ -8,10 +8,9 @@ import NewsLetter from '../Components/NewsLetter/NewsLetter'
 const Shop = () => {
   return (
     <div>
-      <Hero/>
+      <NewColections/>
       <Popular/>
       <Offers/>
-      <NewColections/>
       <NewsLetter/>
     </div>
   )

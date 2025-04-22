@@ -48,7 +48,7 @@ const ProductDisplay = (props) => {
                     <div className="productdisplay-right-price-new">{product.new_price}k</div>
                 </div>
                 <div className="productdisplay-right-description">
-                    yap yap yap yap bla bla bla .... bun ngu qua
+                    {product.description}
                 </div>
                 <div className="productdisplay-right-size">
                     <h1>Select Size</h1>
@@ -72,9 +72,9 @@ const ProductDisplay = (props) => {
                     </div>
                     {showSizeError && <p className="size-error">Vui lòng chọn size trước khi thêm vào giỏ hàng!</p>}
                 </div>
-                <button onClick={handleAddToCart}>ADD TO CART</button>
-                <p className="productdisplay-right-category"><span>Category: </span>Women, T-Shirt, Crop Top</p>
-                <p className="productdisplay-right-category"><span>Tags: </span>Modern, Latest</p>
+                <button onClick={handleAddToCart}>Thêm vào giỏ hàng</button>
+                <p className="productdisplay-right-category"><span>Danh mục: </span>{product.category}</p>
+                <p className="productdisplay-right-category"><span>Tags: </span>{product.tag}</p>
             </div>
         </div>
     )

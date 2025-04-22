@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react'
+import React, { useContext } from 'react'
 import './CSS/ShopCategory.css'
 import { ShopContext } from '../Context/ShopContext'
 import dropdown_icon from '../Components/Assests/dropdown_icon.png'
@@ -6,8 +6,7 @@ import Item from '../Components/item/Item'
 import { Link } from 'react-router-dom'
 
 const ShopCategory = (props) => {
-  const { all_product } = useContext(ShopContext)
-  const [menu, setMenu] = useState();
+  const { all_product, setMenu } = useContext(ShopContext);
   
   return (
     <div className='shop-category'>

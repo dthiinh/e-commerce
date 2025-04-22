@@ -6,8 +6,7 @@ import cart_icon from '../Assests/cart_icon.png'
 import { ShopContext } from '../../Context/ShopContext'
 
 const Navbar = () => {
-    const [menu, setMenu] = useState("shop");
-    const { getTotalCartItems } = useContext(ShopContext);
+    const { getTotalCartItems, menu, setMenu } = useContext(ShopContext);
     const [cartCount, setCartCount] = useState(0);
     
     // Cập nhật số lượng giỏ hàng khi có thay đổi
@@ -19,7 +18,7 @@ const Navbar = () => {
         <div className='navbar'>
             <div className='nav-logo'>
                 <Link to='/'><img src={logo} alt="" onClick={() => { setMenu("shop") }} /></Link>
-                <p>Quần n Áo</p>
+                <p>Áo no Quần shop</p>
             </div>
             <ul className='nav-menu'>
                 <li onClick={() => { setMenu("shop") }}><Link style={{ textDecoration: 'none', color: '#626262' }} to='/'>Trang Chủ</Link>{menu === "shop" ? <hr /> : <></>}</li>

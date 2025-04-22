@@ -9,6 +9,7 @@ const getDefaultCart = () => {
 }
 
 const ShopContextProvider = (props) => {
+    const [menu, setMenu] = useState('shop');
     const [cartItems, setCartItems] = useState(() => {
         // Lấy dữ liệu từ localStorage nếu có
         const savedCart = localStorage.getItem('cartItems');
@@ -118,6 +119,8 @@ const ShopContextProvider = (props) => {
     const contextValue = {
         all_product,
         cartItems,
+        menu,
+        setMenu,
         addToCart,
         removeFromCart,
         removeItemFromCart,

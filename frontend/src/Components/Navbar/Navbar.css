@@ -90,6 +90,10 @@
     font-weight: 600;
 }
 
+.nav-menu li hr {
+    transition: width 0.3s ease;
+}
+
 @media(max-width: 1024px) {
     .navbar {
         padding: 12px 30px;

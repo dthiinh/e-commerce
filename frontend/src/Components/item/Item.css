@@ -1,29 +1,98 @@
-.item{
-    width: 350px;
-}
-
-.item p{
-    margin: 6px 0px;
-}
-
-.item-prices{
+.item {
+    width: 100%;
+    max-width: 350px;
+    text-align: center;
+    transition: transform 0.3s ease;
+  }
+  
+  .item img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    aspect-ratio: 1/1; /* Đảm bảo hình ảnh vuông hoặc tỷ lệ cố định */
+  }
+  
+  .item p {
+    margin: 6px 0;
+    font-size: 16px;
+    color: #374151;
+  }
+  
+  .item-prices {
     display: flex;
+    justify-content: center;
     gap: 20px;
-}
-
-.item-price-new{
+  }
+  
+  .item-price-new {
     color: #374151;
     font-size: 18px;
     font-weight: 600;
-}
-
-.item-price-old{
+  }
+  
+  .item-price-old {
     color: #8c8c8c;
     font-size: 18px;
     font-weight: 500;
     text-decoration: line-through;
-}
-
-.item:hover{
-    transform: scale();
-}
+  }
+  
+  .item:hover {
+    transform: scale(1.05);
+  }
+  
+  /* Responsive cho tablet (dưới 1024px) */
+  @media (max-width: 1024px) {
+    .item {
+      max-width: 250px;
+    }
+  
+    .item p {
+      font-size: 14px;
+    }
+  
+    .item-price-new,
+    .item-price-old {
+      font-size: 16px;
+    }
+  
+    .item-prices {
+      gap: 15px;
+    }
+  }
+  
+  /* Responsive cho mobile (dưới 768px) */
+  @media (max-width: 768px) {
+    .item {
+      max-width: 200px;
+    }
+  
+    .item p {
+      font-size: 13px;
+    }
+  
+    .item-price-new,
+    .item-price-old {
+      font-size: 14px;
+    }
+  
+    .item-prices {
+      gap: 10px;
+    }
+  }
+  
+  /* Responsive cho màn hình rất nhỏ (dưới 480px) */
+  @media (max-width: 480px) {
+    .item {
+      max-width: 100%;
+    }
+  
+    .item p {
+      font-size: 12px;
+    }
+  
+    .item-price-new,
+    .item-price-old {
+      font-size: 13px;
+    }
+  }

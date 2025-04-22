@@ -50,13 +50,13 @@ const CartItems = () => {
                                 <img src={product.image} alt="" className='carticon-product-icon' />
                                 <p>{product.name}</p>
                                 <p>{item.size}</p>
-                                <p>${product.new_price}</p>
+                                <p>{product.new_price}K</p>
                                 <div className="cartitems-quantity-controls">
                                     <button onClick={() => removeFromCart(item.id, item.size)}>-</button>
                                     <span>{item.quantity}</span>
                                     <button onClick={() => removeFromCart(item.id, item.size, -1)}>+</button>
                                 </div>
-                                <p>${product.new_price * item.quantity}</p>
+                                <p>{product.new_price * item.quantity}K</p>
                                 <img 
                                     className='cartitems-remove-icon' 
                                     src={remove_icon} 
@@ -90,14 +90,14 @@ const CartItems = () => {
                             <div>
                                 <div className="cartitems-total-item">
                                     <p>Tạm tính</p>
-                                    <p>${getTotalCartAmount()}</p>
+                                    <p>{getTotalCartAmount()}K</p>
                                 </div>
                                 <hr />
                                 {discount > 0 && (
                                     <>
                                         <div className="cartitems-total-item">
                                             <p>Giảm giá</p>
-                                            <p>-${discount.toFixed(2)}</p>
+                                            <p>-{discount.toFixed(2)}K</p>
                                         </div>
                                         <hr />
                                     </>
@@ -109,7 +109,7 @@ const CartItems = () => {
                                 <hr />
                                 <div className="cartitems-total-item">
                                     <h3>Tổng cộng</h3>
-                                    <h3>${(getTotalCartAmount() - discount).toFixed(2)}</h3>
+                                    <h3>{(getTotalCartAmount() - discount).toFixed(2)}K</h3>
                                 </div>
                             </div>
                             <button onClick={goToCheckout}>THANH TOÁN</button>

@@ -8,7 +8,7 @@ const Breadcrum = (props) => {
   if (!product) return null; 
   return (
     <div className="Breadcrum">
-      HOME <img src={arrow_icon} alt="Arrow" /> SHOP <img src={arrow_icon} alt="Arrow" /> {product.category} <img src={arrow_icon} alt="Arrow" /> {product.name}
+      Trang chủ <img src={arrow_icon} alt="Arrow" /> Mua sắm <img src={arrow_icon} alt="Arrow" /> {product.category} <img src={arrow_icon} alt="Arrow" /> {product.name}
     </div>
   );
 };

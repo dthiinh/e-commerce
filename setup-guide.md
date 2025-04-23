@@ -36,7 +36,13 @@ export const API_ENDPOINTS = {
 };
 ```
 
-Sửa các file trong frontend để sử dụng API thay vì localStorage, ví dụ:
+data));
+        navigate('/');
+      } else {
+        alert(data.message);
+      }
+    } catch (error) {
+      console.error('Đăng nhập thất bại:', error);Sửa các file trong frontend để sử dụng API thay vì localStorage, ví dụ:
 
 ```jsx
 // Thay đổi trong LoginSignup.jsx
@@ -55,13 +61,7 @@ const handleLogin = async (e) => {
       const data = await response.json();
       
       if (data.status) {
-        localStorage.setItem('loggedInUser', JSON.stringify(data.data));
-        navigate('/');
-      } else {
-        alert(data.message);
-      }
-    } catch (error) {
-      console.error('Đăng nhập thất bại:', error);
+        localStorage.setItem('loggedInUser', JSON.stringify(data.
       alert('Đăng nhập thất bại. Vui lòng thử lại sau.');
     }
   }

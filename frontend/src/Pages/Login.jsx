@@ -1,9 +1,12 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import './CSS/Login.css';
+import { AuthContext } from '../Context/AuthContext';
 
 const Login = ({ isEmbedded = false, onSwitchTab }) => {
   const navigate = useNavigate();
+  const { login, isLoading, error: authError } = useContext(AuthContext);
+  
   const [formData, setFormData] = useState({
     email: '',
     password: '',
@@ -46,15 +49,18 @@ const Login = ({ isEmbedded = false, onSwitchTab }) => {
     return Object.keys(errors).length === 0;
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     
     if (validateForm()) {
-      console.log('Đăng nhập với:', formData);
-      
-      // Giả lập đăng nhập thành công
-      alert('Đăng nhập thành công!');
-      navigate('/');
+      try {
+        await login(formData.email, formData.password);
+        // Đăng nhập thành công
+        navigate('/');
+      } catch (error) {
+        // Lỗi đã được xử lý trong AuthContext
+        console.error("Đăng nhập thất bại:", error);
+      }
     }
   };
 
@@ -91,6 +97,8 @@ const Login = ({ isEmbedded = false, onSwitchTab }) => {
             {formErrors.password && <span className="error-message">{formErrors.password}</span>}
           </div>
           
+          {authError && <div className="auth-error">{authError}</div>}
+          
           <div className="login-options">
             <div className="remember-me">
               <input 
@@ -112,23 +120,23 @@ const Login = ({ isEmbedded = false, onSwitchTab }) => {
             }}>Quên mật khẩu?</a>
           </div>
           
-          <button type="submit" className="login-button">Đăng nhập</button>
+          <button type="submit" className="login-button" disabled={isLoading}>
+            {isLoading ? 'Đang xử lý...' : 'Đăng nhập'}
+          </button>
         </form>
         
-        {onSwitchTab && (
-          <div className="login-footer">
-            <p>Chưa có tài khoản? <a onClick={onSwitchTab} className="switch-tab-link">Đăng ký ngay</a></p>
-          </div>
-        )}
+        <div className="login-footer">
+          <p>Chưa có tài khoản? <Link to="/signup">Đăng ký ngay</Link></p>
+        </div>
       </div>
     );
   }
 
-  // Nếu được render như một trang độc lập
+  // Render đầy đủ trang đăng nhập
   return (
-    <div className="login">
-      <div className="login-container">
-        <h1>Đăng nhập</h1>
+    <div className="login-container">
+      <div className="login-box">
+        <h1 className="login-title">Đăng nhập</h1>
         
         <form onSubmit={handleSubmit}>
           <div className="login-field">
@@ -159,6 +167,8 @@ const Login = ({ isEmbedded = false, onSwitchTab }) => {
             {formErrors.password && <span className="error-message">{formErrors.password}</span>}
           </div>
           
+          {authError && <div className="auth-error">{authError}</div>}
+          
           <div className="login-options">
             <div className="remember-me">
               <input 
@@ -180,7 +190,9 @@ const Login = ({ isEmbedded = false, onSwitchTab }) => {
             }}>Quên mật khẩu?</a>
           </div>
           
-          <button type="submit" className="login-button">Đăng nhập</button>
+          <button type="submit" className="login-button" disabled={isLoading}>
+            {isLoading ? 'Đang xử lý...' : 'Đăng nhập'}
+          </button>
         </form>
         
         <div className="login-footer">

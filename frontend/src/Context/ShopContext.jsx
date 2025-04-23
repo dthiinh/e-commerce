@@ -1,5 +1,7 @@
-import React, { createContext, useState, useEffect } from "react";
+import React, { createContext, useState, useEffect, useContext } from "react";
 import all_product from "../Components/Assests/all_product";
+import { AuthContext } from "./AuthContext";
+import { useNavigate } from "react-router-dom";
 
 export const ShopContext = createContext(null);
 
@@ -15,6 +17,10 @@ const ShopContextProvider = (props) => {
         const savedCart = localStorage.getItem('cartItems');
         return savedCart ? JSON.parse(savedCart) : getDefaultCart();
     });
+    const [showLoginPrompt, setShowLoginPrompt] = useState(false);
+    
+    // Auth context để kiểm tra đăng nhập
+    const { isAuthenticated } = useContext(AuthContext);
     
     // Lưu giỏ hàng vào localStorage mỗi khi có thay đổi
     useEffect(() => {
@@ -115,18 +121,44 @@ const ShopContextProvider = (props) => {
         
         return totalItems;
     }
+    
+    // Kiểm tra đăng nhập trước khi thanh toán
+    const proceedToCheckout = (navigate) => {
+        if (!isAuthenticated()) {
+            setShowLoginPrompt(true);
+            return false;
+        }
+        
+        navigate('/checkout');
+        return true;
+    }
+    
+    // Đóng thông báo đăng nhập
+    const closeLoginPrompt = () => {
+        setShowLoginPrompt(false);
+    }
+    
+    // Chuyển hướng đến trang đăng nhập
+    const goToLogin = (navigate) => {
+        setShowLoginPrompt(false);
+        navigate('/login');
+    }
 
     const contextValue = {
         all_product,
         cartItems,
         menu,
         setMenu,
+        showLoginPrompt,
         addToCart,
         removeFromCart,
         removeItemFromCart,
         resetCart,
         getTotalCartAmount,
-        getTotalCartItems
+        getTotalCartItems,
+        proceedToCheckout,
+        closeLoginPrompt,
+        goToLogin
     };
     
     return (
@@ -136,4 +168,4 @@ const ShopContextProvider = (props) => {
     )
 }
 
-export default ShopContextProvider
+export default ShopContextProvider;

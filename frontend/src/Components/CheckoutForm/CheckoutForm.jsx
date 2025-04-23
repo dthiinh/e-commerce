@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import './CheckoutForm.css';
-import bank_icon from '../Components/Assests/qr_icon.jpg'; 
+import bank_icon from '../Assests/qr_icon.jpg'; 
 
 const CheckoutForm = ({ onSubmit }) => {
   const [formData, setFormData] = useState({

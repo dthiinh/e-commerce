@@ -26,7 +26,7 @@ const CheckoutSummary = () => {
                                         <p>Size: {item.size}</p>
                                         <p>Số lượng: {item.quantity}</p>
                                     </div>
-                                    <p className="summary-item-price">${product.new_price * item.quantity}</p>
+                                    <p className="summary-item-price">{product.new_price * item.quantity}K</p>
                                 </div>
                             </div>
                         );
@@ -38,13 +38,13 @@ const CheckoutSummary = () => {
             <div className="summary-totals">
                 <div className="summary-total-item">
                     <p>Tạm tính</p>
-                    <p>${getTotalCartAmount()}</p>
+                    <p>{getTotalCartAmount()}K</p>
                 </div>
                 
                 {discount > 0 && (
                     <div className="summary-total-item discount">
                         <p>Giảm giá</p>
-                        <p>-${discount.toFixed(2)}</p>
+                        <p>-{discount.toFixed(2)}K</p>
                     </div>
                 )}
                 
@@ -55,7 +55,7 @@ const CheckoutSummary = () => {
                 
                 <div className="summary-total-item final">
                     <h3>Tổng cộng</h3>
-                    <h3>${(getTotalCartAmount() - discount).toFixed(2)}</h3>
+                    <h3>{(getTotalCartAmount() - discount).toFixed(3)}K</h3>
                 </div>
             </div>
         </div>

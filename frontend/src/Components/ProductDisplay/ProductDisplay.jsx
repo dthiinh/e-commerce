@@ -47,9 +47,6 @@ const ProductDisplay = (props) => {
                     <div className="productdisplay-right-price-old">{product.old_price}k</div>
                     <div className="productdisplay-right-price-new">{product.new_price}k</div>
                 </div>
-                <div className="productdisplay-right-description">
-                    {product.description}
-                </div>
                 <div className="productdisplay-right-size">
                     <h1>Select Size</h1>
                     <div className="productdisplay-right-sizes">

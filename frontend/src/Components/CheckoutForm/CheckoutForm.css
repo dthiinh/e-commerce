@@ -80,9 +80,25 @@
   }
   
   .payment-icon {
-    width: 24px;
-    height: 24px;
+    width: 350px;
+    height: 350px;
     vertical-align: middle;
+  }
+
+  .bank-qr {
+    display: flex;
+    justify-content: center;
+    margin-top: 15px;
+    padding: 10px;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+  }
+  
+  .bank-qr img {
+    max-width: 300px;
+    height: auto;
+    border-radius: 4px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
   }
   
   .checkout-button {
@@ -133,8 +149,12 @@
     }
   
     .payment-icon {
-      width: 20px;
-      height: 20px;
+      width: 600px;
+      height: 600px;
+    }
+
+    .bank-qr img {
+      max-width: 150px;
     }
   }
   
@@ -161,7 +181,11 @@
     }
   
     .payment-icon {
-      width: 18px;
-      height: 18px;
+      width: 400px;
+      height: 4000px;
+    }
+
+    .bank-qr img {
+      max-width: 120px;
     }
   }

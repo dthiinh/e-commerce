@@ -1,0 +1,57 @@
+/* Import các style chung từ LoginSignup.css */
+@import '../../Pages/CSS/LoginSignup.css';
+
+/* Style bổ sung cho component Login */
+.login-form {
+  width: 100%;
+}
+
+.login-options {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 25px;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.remember-me {
+  display: flex;
+  align-items: center;
+}
+
+.remember-me input {
+  margin-right: 8px;
+  min-width: 16px;
+  min-height: 16px;
+}
+
+.remember-me label {
+  color: #555;
+  font-size: clamp(12px, 3vw, 14px);
+}
+
+.forgot-password {
+  color: #ff4141;
+  font-size: clamp(12px, 3vw, 14px);
+  text-decoration: none;
+  transition: color 0.3s;
+}
+
+.forgot-password:hover {
+  color: #e03a3a;
+  text-decoration: underline;
+}
+
+/* Responsive styles cho component Login */
+@media (max-width: 768px) {
+  .login-options {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  
+  .forgot-password {
+    margin-top: 5px;
+    align-self: flex-end;
+  }
+} 

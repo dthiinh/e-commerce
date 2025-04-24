@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import './CheckoutForm.css';
-import bank_icon from '../Components/Assests/qr_icon.jpg'; 
+import bank_icon from '../Assests/qr_icon.jpg';
 
 const CheckoutForm = ({ onSubmit }) => {
   const [formData, setFormData] = useState({
@@ -117,10 +117,12 @@ const CheckoutForm = ({ onSubmit }) => {
               />
               <label htmlFor="bank">
                 Chuyển khoản ngân hàng
-                {formData.paymentMethod === 'bank' && (
-                  <img src={bank_icon} alt="Bank Icon" className="payment-icon" />
-                )}
               </label>
+            </div>
+            <div className="bank-qr">
+              {formData.paymentMethod === 'bank' && (
+                <img src={bank_icon} alt="Bank Icon" className="payment-icon" />
+              )}
             </div>
           </div>
         </div>

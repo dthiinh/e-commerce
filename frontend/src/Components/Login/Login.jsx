@@ -1,21 +1,20 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { ShopContext } from '../../Context/ShopContext'
 import './Login.css';
 
 const Login = ({ switchTab }) => {
   const navigate = useNavigate();
+  const { setMenu } = useContext(ShopContext);
   
-  // State cho form đăng nhập
   const [loginData, setLoginData] = useState({
     email: '',
     password: '',
     rememberMe: false
   });
 
-  // State cho lỗi form
   const [formErrors, setFormErrors] = useState({});
 
-  // Xử lý thay đổi trong form đăng nhập
   const handleLoginChange = (e) => {
     const { name, value, type, checked } = e.target;
     setLoginData(prev => ({
@@ -23,7 +22,6 @@ const Login = ({ switchTab }) => {
       [name]: type === 'checkbox' ? checked : value
     }));
 
-    // Xóa lỗi khi người dùng bắt đầu nhập lại
     if (formErrors[name]) {
       setFormErrors(prev => {
         const newErrors = { ...prev };
@@ -33,7 +31,7 @@ const Login = ({ switchTab }) => {
     }
   };
 
-  // Xác thực form đăng nhập
+ 
   const validateLoginForm = () => {
     const errors = {};
     
@@ -51,16 +49,15 @@ const Login = ({ switchTab }) => {
     return Object.keys(errors).length === 0;
   };
 
-  // Xử lý đăng nhập
+
   const handleLogin = (e) => {
     e.preventDefault();
     
     if (validateLoginForm()) {
       console.log('Đăng nhập với:', loginData);
-      
-      // Giả lập đăng nhập thành công
       alert('Đăng nhập thành công!');
       navigate('/');
+      setMenu('shop');
     }
   };
 

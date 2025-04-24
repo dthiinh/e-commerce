@@ -9,7 +9,7 @@
     width: 100%;
     height: auto;
     object-fit: cover;
-    aspect-ratio: 1/1; /* Đảm bảo hình ảnh vuông hoặc tỷ lệ cố định */
+    aspect-ratio: 1/1; 
   }
   
   .item p {
@@ -41,7 +41,7 @@
     transform: scale(1.05);
   }
   
-  /* Responsive cho tablet (dưới 1024px) */
+  
   @media (max-width: 1024px) {
     .item {
       max-width: 250px;
@@ -81,7 +81,7 @@
     }
   }
   
-  /* Responsive cho màn hình rất nhỏ (dưới 480px) */
+  
   @media (max-width: 480px) {
     .item {
       max-width: 100%;

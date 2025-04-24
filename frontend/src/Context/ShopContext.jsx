@@ -11,27 +11,22 @@ const getDefaultCart = () => {
 const ShopContextProvider = (props) => {
     const [menu, setMenu] = useState('shop');
     const [cartItems, setCartItems] = useState(() => {
-        // Lấy dữ liệu từ localStorage nếu có
         const savedCart = localStorage.getItem('cartItems');
         return savedCart ? JSON.parse(savedCart) : getDefaultCart();
     });
     
-    // Lưu giỏ hàng vào localStorage mỗi khi có thay đổi
     useEffect(() => {
         localStorage.setItem('cartItems', JSON.stringify(cartItems));
     }, [cartItems]);
     
-    // Thêm sản phẩm với size vào giỏ hàng
     const addToCart = (itemID, selectedSize) => {
         setCartItems((prev) => {
             const updatedCart = { ...prev };
             const cartItemKey = `${itemID}_${selectedSize}`;
             
-            // Nếu sản phẩm với size này đã tồn tại, tăng số lượng
             if (updatedCart[cartItemKey]) {
                 updatedCart[cartItemKey].quantity += 1;
             } else {
-                // Nếu chưa tồn tại, thêm mới
                 updatedCart[cartItemKey] = {
                     id: itemID,
                     size: selectedSize,
@@ -43,7 +38,6 @@ const ShopContextProvider = (props) => {
         });
     }
 
-    // Xóa sản phẩm khỏi giỏ hàng
     const removeFromCart = (itemID, selectedSize, action = 1) => {
         setCartItems((prev) => {
             const updatedCart = { ...prev };
@@ -51,14 +45,12 @@ const ShopContextProvider = (props) => {
             
             if (updatedCart[cartItemKey]) {
                 if (action === 1) {
-                    // Giảm số lượng
                     if (updatedCart[cartItemKey].quantity > 1) {
                         updatedCart[cartItemKey].quantity -= 1;
                     } else {
                         delete updatedCart[cartItemKey];
                     }
                 } else {
-                    // Tăng số lượng
                     updatedCart[cartItemKey].quantity += 1;
                 }
             }
@@ -67,12 +59,10 @@ const ShopContextProvider = (props) => {
         });
     }
     
-    // Xóa toàn bộ sản phẩm khỏi giỏ hàng
     const removeItemFromCart = (itemID, selectedSize) => {
         setCartItems((prev) => {
             const updatedCart = { ...prev };
             const cartItemKey = `${itemID}_${selectedSize}`;
-            
             if (updatedCart[cartItemKey]) {
                 delete updatedCart[cartItemKey];
             }
@@ -81,12 +71,10 @@ const ShopContextProvider = (props) => {
         });
     }
     
-    // Reset giỏ hàng
     const resetCart = () => {
         setCartItems(getDefaultCart());
     }
     
-    // Tính tổng tiền giỏ hàng
     const getTotalCartAmount = () => {
         let totalAmount = 0;
         
@@ -102,7 +90,6 @@ const ShopContextProvider = (props) => {
         return totalAmount;
     }
 
-    // Đếm tổng số sản phẩm trong giỏ hàng
     const getTotalCartItems = () => {
         let totalItems = 0;
         

@@ -9,7 +9,7 @@ const LoginSignup = () => {
   const location = useLocation();
   const [activeTab, setActiveTab] = useState('login');
   
-  // Tự động chuyển tab dựa trên đường dẫn
+  
   useEffect(() => {
     if (location.pathname === '/signup') {
       setActiveTab('signup');
@@ -18,7 +18,7 @@ const LoginSignup = () => {
     }
   }, [location.pathname]);
   
-  // Chuyển tab và cập nhật URL
+  
   const switchTab = (tab) => {
     setActiveTab(tab);
     navigate(tab === 'login' ? '/login' : '/signup');

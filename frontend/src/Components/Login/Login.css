@@ -1,7 +1,6 @@
 /* Import các style chung từ LoginSignup.css */
 @import '../../Pages/CSS/LoginSignup.css';
 
-/* Style bổ sung cho component Login */
 .login-form {
   width: 100%;
 }

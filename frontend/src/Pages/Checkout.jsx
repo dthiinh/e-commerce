@@ -7,19 +7,16 @@ import { ShopContext } from '../Context/ShopContext';
 
 const Checkout = () => {
   const navigate = useNavigate();
-  const { resetCart } = useContext(ShopContext);
+  const { setMenu, resetCart } = useContext(ShopContext);
   const [orderComplete, setOrderComplete] = useState(false);
   const [orderInfo, setOrderInfo] = useState(null);
 
   const handleCheckout = (formData) => {
-    // Đây là nơi bạn sẽ xử lý đặt hàng thực sự (gửi API, v.v.)
     console.log('Thông tin đặt hàng:', formData);
     
-    // Giả lập đặt hàng thành công
     setOrderInfo(formData);
     setOrderComplete(true);
     
-    // Reset giỏ hàng
     setTimeout(() => {
       resetCart();
     }, 1000);
@@ -27,6 +24,7 @@ const Checkout = () => {
 
   const handleBackToShop = () => {
     navigate('/');
+    setMenu('shop');
   };
 
   return (

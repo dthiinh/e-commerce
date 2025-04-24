@@ -5,7 +5,6 @@ import './Signup.css';
 const Signup = ({ switchTab }) => {
   const navigate = useNavigate();
   
-  // State cho form đăng ký
   const [signupData, setSignupData] = useState({
     fullName: '',
     email: '',
@@ -14,10 +13,8 @@ const Signup = ({ switchTab }) => {
     agree: false
   });
 
-  // State cho lỗi form
   const [formErrors, setFormErrors] = useState({});
 
-  // Xử lý thay đổi trong form đăng ký
   const handleSignupChange = (e) => {
     const { name, value, type, checked } = e.target;
     setSignupData(prev => ({
@@ -25,7 +22,6 @@ const Signup = ({ switchTab }) => {
       [name]: type === 'checkbox' ? checked : value
     }));
 
-    // Xóa lỗi khi người dùng bắt đầu nhập lại
     if (formErrors[name]) {
       setFormErrors(prev => {
         const newErrors = { ...prev };
@@ -35,7 +31,6 @@ const Signup = ({ switchTab }) => {
     }
   };
 
-  // Xác thực form đăng ký
   const validateSignupForm = () => {
     const errors = {};
     
@@ -69,14 +64,11 @@ const Signup = ({ switchTab }) => {
     return Object.keys(errors).length === 0;
   };
 
-  // Xử lý đăng ký
   const handleSignup = (e) => {
     e.preventDefault();
     
     if (validateSignupForm()) {
       console.log('Đăng ký với:', signupData);
-      
-      // Giả lập đăng ký thành công
       alert('Đăng ký thành công! Vui lòng đăng nhập.');
       switchTab('login');
       navigate('/login');

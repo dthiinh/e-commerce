@@ -10,29 +10,34 @@ const Footer = () => {
         <div className='footer'>
             <div className="footer-logo">
                 <img src={footer_logo} alt="" />
-                <p>PHOPPER</p>
+                <p>Áo Shop</p>
             </div>
             <ul className="footer-links">
-                <li>Công ty</li>
-                <li>Sản phẩm</li>
-                <li>Văn phòng</li>
-                <li>Giới thiệu</li>
-                <li>Liên hệ</li>
+                <li onClick={() => window.open('https://www.sgu.edu.vn/', '_blank')}>
+                    Công ty</li>
+                <li onClick={() => window.open('https://www.sgu.edu.vn/', '_blank')}>
+                    Sản phẩm</li>
+                <li onClick={() => window.open('https://www.sgu.edu.vn/', '_blank')}>
+                    Văn phòng</li>
+                <li onClick={() => window.open('https://www.sgu.edu.vn/', '_blank')}>
+                    Giới thiệu</li>
+                <li onClick={() => window.open('https://www.sgu.edu.vn/', '_blank')}>
+                    Liên hệ</li>
             </ul>
             <div className="footer-social-icon">
                 <div className="footer-icon-container">
-                    <img src={instagram_icon} alt="" />
+                    <img src={instagram_icon} alt="" onClick={() => window.open('https://www.instagram.com/vu_dthiinh/', '_blank')}/>
                 </div>
                 <div className="footer-icon-container">
-                    <img src={pintester_icon} alt="" />
+                    <img src={pintester_icon} alt="" onClick={() => window.open('https://www.pinterest.com/', '_blank')}/>
                 </div>
                 <div className="footer-icon-container">
-                    <img src={whatsapp_icon} alt="" />
+                    <img src={whatsapp_icon} alt="" onClick={() => window.open('https://www.facebook.com/vu.inh.thinh.508995', '_blank')}/>
                 </div>
             </div>
             <div className="footer-copyright">
                 <hr/>
-                <p>Copyright @ 2023 - All Right Reserved.</p>
+                <p>No Copyright @ 2025 - Made by Kvbe.</p>
             </div>
         </div>
     )

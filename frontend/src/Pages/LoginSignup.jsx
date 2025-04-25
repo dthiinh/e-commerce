@@ -9,7 +9,6 @@ const LoginSignup = () => {
   const location = useLocation();
   const [activeTab, setActiveTab] = useState('login');
   
-  
   useEffect(() => {
     if (location.pathname === '/signup') {
       setActiveTab('signup');
@@ -17,7 +16,6 @@ const LoginSignup = () => {
       setActiveTab('login');
     }
   }, [location.pathname]);
-  
   
   const switchTab = (tab) => {
     setActiveTab(tab);

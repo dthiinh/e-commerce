@@ -1,8 +1,11 @@
-import React, { useState } from 'react';
+import React, { useState, useContext, useEffect } from 'react';
 import './CheckoutForm.css';
 import bank_icon from '../Assests/qr_icon.jpg';
+import { ShopContext } from '../../Context/ShopContext';
 
 const CheckoutForm = ({ onSubmit }) => {
+  const { setShowSummary } = useContext(ShopContext);
+  
   const [formData, setFormData] = useState({
     fullName: '',
     email: '',
@@ -18,7 +21,19 @@ const CheckoutForm = ({ onSubmit }) => {
       ...prev,
       [name]: value,
     }));
+    
+    // Nếu trường thành phố được điền thì hiển thị summary
+    if (name === 'city') {
+      setShowSummary(value.trim() !== '');
+    }
   };
+  
+  // Đảm bảo khi component unmount, trạng thái showSummary được reset
+  useEffect(() => {
+    return () => {
+      setShowSummary(false);
+    };
+  }, [setShowSummary]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -83,7 +98,7 @@ const CheckoutForm = ({ onSubmit }) => {
             <label htmlFor="city">Thành phố</label>
             <input
               type="text"
-              id professionista="city"
+              id="city"
               name="city"
               value={formData.city}
               onChange={handleChange}

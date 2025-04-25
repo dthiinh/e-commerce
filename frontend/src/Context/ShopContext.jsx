@@ -15,6 +15,8 @@ const ShopContextProvider = (props) => {
         return savedCart ? JSON.parse(savedCart) : getDefaultCart();
     });
     
+    const [showSummary, setShowSummary] = useState(false);
+    
     useEffect(() => {
         localStorage.setItem('cartItems', JSON.stringify(cartItems));
     }, [cartItems]);
@@ -113,7 +115,9 @@ const ShopContextProvider = (props) => {
         removeItemFromCart,
         resetCart,
         getTotalCartAmount,
-        getTotalCartItems
+        getTotalCartItems,
+        showSummary,
+        setShowSummary
     };
     
     return (

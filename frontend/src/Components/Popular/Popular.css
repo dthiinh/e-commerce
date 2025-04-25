@@ -1,98 +1,103 @@
 .popular {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 10px;
-    padding: 20px 0;
-    min-height: 90vh;
-    box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  padding: 20px 0;
+  margin: 0 20px 100px;
+  box-sizing: border-box;
+}
+
+.popular h1 {
+  color: #171717;
+  font-size: 50px;
+  font-weight: 600;
+  margin: 0;
+  text-align: center;
+}
+
+.popular hr {
+  width: 200px;
+  height: 6px;
+  border-radius: 10px;
+  background: #252525;
+  border: none;
+}
+
+.popular-item {
+  margin-top: 50px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 30px;
+  width: 100%;
+  max-width: 1200px; /* Giới hạn chiều rộng tối đa */
+}
+
+/* Responsive cho tablet (dưới 1024px) */
+@media (max-width: 1024px) {
+  .popular {
+    padding: 15px 0;
+    margin: 0 15px 80px;
   }
-  
+
   .popular h1 {
-    color: #171717;
-    font-size: 50px;
-    font-weight: 600;
-    margin: 0;
+    font-size: 40px;
   }
-  
+
   .popular hr {
-    width: 200px;
-    height: 6px;
-    border-radius: 10px;
-    background: #252525;
-    border: none;
+    width: 180px;
+    height: 5px;
   }
-  
+
   .popular-item {
-    margin-top: 50px;
-    display: flex;
-    gap: 30px;
-    flex-wrap: wrap;
-    justify-content: center;
+    margin-top: 40px;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
   }
-  
-  /* Responsive cho tablet (dưới 1024px) */
-  @media (max-width: 1024px) {
-    .popular {
-      padding: 15px 0;
-      min-height: auto;
-    }
-  
-    .popular h1 {
-      font-size: 40px;
-    }
-  
-    .popular hr {
-      width: 180px;
-      height: 5px;
-    }
-  
-    .popular-item {
-      margin-top: 40px;
-      gap: 20px;
-    }
+}
+
+/* Responsive cho mobile (dưới 768px) */
+@media (max-width: 768px) {
+  .popular {
+    padding: 10px 0;
+    margin: 0 10px 60px;
   }
-  
-  /* Responsive cho mobile (dưới 768px) */
-  @media (max-width: 768px) {
-    .popular {
-      padding: 10px 0;
-    }
-  
-    .popular h1 {
-      font-size: 32px;
-    }
-  
-    .popular hr {
-      width: 150px;
-      height: 4px;
-    }
-  
-    .popular-item {
-      margin-top: 30px;
-      gap: 15px;
-      flex-direction: column;
-      align-items: center;
-    }
+
+  .popular h1 {
+    font-size: 32px;
   }
-  
-  /* Responsive cho màn hình rất nhỏ (dưới 480px) */
-  @media (max-width: 480px) {
-    .popular {
-      padding: 10px 0;
-    }
-  
-    .popular h1 {
-      font-size: 24px;
-    }
-  
-    .popular hr {
-      width: 120px;
-      height: 3px;
-    }
-  
-    .popular-item {
-      margin-top: 20px;
-      gap: 10px;
-    }
+
+  .popular hr {
+    width: 150px;
+    height: 4px;
   }
+
+  .popular-item {
+    margin-top: 30px;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+  }
+}
+
+/* Responsive cho màn hình rất nhỏ (dưới 480px) */
+@media (max-width: 480px) {
+  .popular {
+    padding: 10px 0;
+    margin: 0 5px 40px;
+  }
+
+  .popular h1 {
+    font-size: 24px;
+  }
+
+  .popular hr {
+    width: 120px;
+    height: 3px;
+  }
+
+  .popular-item {
+    margin-top: 20px;
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+}

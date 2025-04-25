@@ -103,11 +103,6 @@ const CartItems = () => {
                                     </>
                                 )}
                                 <div className="cartitems-total-item">
-                                    <p>Phí vận chuyển</p>
-                                    <p>Miễn phí</p>
-                                </div>
-                                <hr />
-                                <div className="cartitems-total-item">
                                     <h3>Tổng cộng</h3>
                                     <h3>{(getTotalCartAmount() - discount).toFixed(2)}K</h3>
                                 </div>

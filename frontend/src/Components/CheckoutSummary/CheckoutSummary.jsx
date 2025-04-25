@@ -3,7 +3,7 @@ import './CheckoutSummary.css';
 import { ShopContext } from '../../Context/ShopContext';
 
 const CheckoutSummary = () => {
-    const { getTotalCartAmount, all_product, cartItems, discount = 0 } = useContext(ShopContext);
+    const { getTotalCartAmount, all_product, cartItems, discount = 0, showSummary } = useContext(ShopContext);
 
     return (
         <div className="checkout-summary">
@@ -35,29 +35,29 @@ const CheckoutSummary = () => {
                 })}
             </div>
             
-            <div className="summary-totals">
-                <div className="summary-total-item">
-                    <p>Tạm tính</p>
-                    <p>{getTotalCartAmount()}K</p>
-                </div>
-                
-                {discount > 0 && (
-                    <div className="summary-total-item discount">
-                        <p>Giảm giá</p>
-                        <p>-{discount.toFixed(2)}K</p>
+                <div className="summary-totals">
+                    <div className="summary-total-item">
+                        <p>Tạm tính</p>
+                        <p>{getTotalCartAmount()}K</p>
                     </div>
-                )}
-                
-                <div className="summary-total-item">
-                    <p>Phí vận chuyển</p>
-                    <p>Miễn phí</p>
+                    
+                    {discount > 0 && (
+                        <div className="summary-total-item discount">
+                            <p>Giảm giá</p>
+                            <p>-{discount.toFixed(2)}K</p>
+                        </div>
+                    )}
+                    
+                    <div className="summary-total-item">
+                        <p>Phí vận chuyển</p>
+                        {showSummary && (<p>Miễn phí</p>)}
+                    </div>
+                    
+                    <div className="summary-total-item final">
+                        <h3>Tổng cộng</h3>
+                        <h3>{(getTotalCartAmount() - discount).toFixed(0)}K</h3>
+                    </div>
                 </div>
-                
-                <div className="summary-total-item final">
-                    <h3>Tổng cộng</h3>
-                    <h3>{(getTotalCartAmount() - discount).toFixed(3)}K</h3>
-                </div>
-            </div>
         </div>
     );
 };

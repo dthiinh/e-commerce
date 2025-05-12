@@ -1,27 +1,103 @@
-.new-collection{
+.new-collection {
     display: flex;
     flex-direction: column;
     align-items: center;
     gap: 10px;
-    margin: 0px 20px 100px;
-}
-
-.new-collection h1{
+    padding: 20px 0;
+    margin: 0 20px 100px;
+    box-sizing: border-box;
+  }
+  
+  .new-collection h1 {
     color: #171717;
     font-size: 50px;
     font-weight: 600;
-}
-
-.new-collection hr{
+    margin: 0;
+    text-align: center;
+  }
+  
+  .new-collection hr {
     width: 200px;
     height: 6px;
     border-radius: 10px;
     background: #252525;
-}
-
-.collections{
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr;
+    border: none;
+  }
+  
+  .collections {
     margin-top: 50px;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
     gap: 30px;
-}
+    width: 100%;
+    max-width: 1200px; /* Giới hạn chiều rộng tối đa */
+  }
+  
+  /* Responsive cho tablet (dưới 1024px) */
+  @media (max-width: 1024px) {
+    .new-collection {
+      padding: 15px 0;
+      margin: 0 15px 80px;
+    }
+  
+    .new-collection h1 {
+      font-size: 40px;
+    }
+  
+    .new-collection hr {
+      width: 180px;
+      height: 5px;
+    }
+  
+    .collections {
+      margin-top: 40px;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+  }
+  
+  /* Responsive cho mobile (dưới 768px) */
+  @media (max-width: 768px) {
+    .new-collection {
+      padding: 10px 0;
+      margin: 0 10px 60px;
+    }
+  
+    .new-collection h1 {
+      font-size: 32px;
+    }
+  
+    .new-collection hr {
+      width: 150px;
+      height: 4px;
+    }
+  
+    .collections {
+      margin-top: 30px;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 15px;
+    }
+  }
+  
+  /* Responsive cho màn hình rất nhỏ (dưới 480px) */
+  @media (max-width: 480px) {
+    .new-collection {
+      padding: 10px 0;
+      margin: 0 5px 40px;
+    }
+  
+    .new-collection h1 {
+      font-size: 24px;
+    }
+  
+    .new-collection hr {
+      width: 120px;
+      height: 3px;
+    }
+  
+    .collections {
+      margin-top: 20px;
+      grid-template-columns: 1fr;
+      gap: 10px;
+    }
+  }

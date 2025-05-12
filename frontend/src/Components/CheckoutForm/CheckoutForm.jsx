@@ -32,7 +32,7 @@ const CheckoutForm = ({ onSubmit }) => {
   useEffect(() => {
     return () => {
       setShowSummary(false);
-    };
+  };
   }, [setShowSummary]);
 
   const handleSubmit = (e) => {
